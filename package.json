@@ -1,0 +1,14 @@
+{
+  "name": "panorama-viewer-project",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node ./scripts/generate-panorama.mjs",
+    "serve": "node ./server.mjs",
+    "start": "node ./server.mjs"
+  },
+  "dependencies": {
+    "three": "^0.184.0"
+  }
+}

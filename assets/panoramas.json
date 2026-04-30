@@ -1,0 +1,8 @@
+{
+  "panoramas": [
+    {
+      "label": "默认全景图",
+      "file": "./assets/panorama-final.png"
+    }
+  ]
+}
