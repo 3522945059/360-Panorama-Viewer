@@ -1,0 +1,268 @@
+:root {
+  color-scheme: dark;
+  --bg: #07090d;
+  --panel: rgba(10, 14, 20, 0.34);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text: #f4f7fb;
+  --muted: rgba(244, 247, 251, 0.72);
+  --accent: #9dc3ff;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(42, 62, 94, 0.22), transparent 42%),
+    linear-gradient(180deg, #0f141d 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.viewer {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.viewer.is-dragging {
+  cursor: grabbing;
+}
+
+.hud {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.brand,
+.status,
+.controls,
+.picker-row,
+.picker,
+.file-button {
+  pointer-events: auto;
+}
+
+.brand {
+  max-width: min(46ch, 60vw);
+  padding: 16px 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+}
+
+.brand-kicker {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.brand h1 {
+  margin: 8px 0 0;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+}
+
+.status {
+  align-self: center;
+  padding: 10px 14px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: rgba(8, 11, 16, 0.38);
+  color: var(--muted);
+  backdrop-filter: blur(10px);
+}
+
+.status-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.picker-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: rgba(8, 11, 16, 0.38);
+  color: var(--muted);
+  backdrop-filter: blur(10px);
+}
+
+.picker-label {
+  color: var(--muted);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.picker-select {
+  min-width: 220px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.picker-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.ghost-button {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(8, 11, 16, 0.34);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: inherit;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.ghost-button:hover {
+  transform: translateY(-1px);
+  background: rgba(16, 22, 30, 0.48);
+  border-color: rgba(157, 195, 255, 0.4);
+}
+
+.empty-state {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(4, 6, 10, 0.44);
+  backdrop-filter: blur(10px);
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.empty-card {
+  max-width: 560px;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid var(--panel-border);
+  background: rgba(10, 14, 20, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.empty-eyebrow {
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.empty-card h2 {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 2.5vw, 36px);
+}
+
+.empty-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+code {
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  color: #d2e2ff;
+}
+
+@media (max-width: 900px) {
+  .hud {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .status-stack {
+    align-items: stretch;
+  }
+
+  .picker-row {
+    justify-content: stretch;
+  }
+
+  .picker {
+    width: 100%;
+    border-radius: 20px;
+    justify-content: space-between;
+  }
+
+  .picker-select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .brand {
+    max-width: none;
+  }
+
+  .controls {
+    justify-content: flex-end;
+  }
+}
