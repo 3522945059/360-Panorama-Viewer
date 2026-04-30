@@ -56,7 +56,6 @@ Optional environment variables:
 - `OPENAI_IMAGE_QUALITY` default: `high`
 - `OPENAI_IMAGE_BACKGROUND` default: `opaque`
 
->>>>>>> d343f6d8fb2e8d56a6945a0e00fa2ae79fc65dfc
 ## Run the local viewer
 
 ```powershell
