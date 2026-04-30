@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 360 Panorama Viewer
 
 ## Requirements
